@@ -36,6 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.familleTableAdapter = new Medicament.gsbrapports2016DataSet1TableAdapters.familleTableAdapter();
+            this.familleTableAdapter1 = new Medicament.gsbrapports2016DataSet1TableAdapters.familleTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.familleBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gsbrapports2016DataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.familleBindingSource)).BeginInit();
@@ -91,6 +92,10 @@
             // 
             this.familleTableAdapter.ClearBeforeFill = true;
             // 
+            // familleTableAdapter1
+            // 
+            this.familleTableAdapter1.ClearBeforeFill = true;
+            // 
             // FrmMedicaments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -119,6 +124,7 @@
         private gsbrapports2016DataSet1 gsbrapports2016DataSet1;
         private System.Windows.Forms.BindingSource familleBindingSource1;
         private gsbrapports2016DataSet1TableAdapters.familleTableAdapter familleTableAdapter;
+        private gsbrapports2016DataSet1TableAdapters.familleTableAdapter familleTableAdapter1;
     }
 }
 

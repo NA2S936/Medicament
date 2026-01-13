@@ -34,5 +34,12 @@ namespace Medicament
             FrmCreation frmCreation = new FrmCreation();
             frmCreation.Show();
         }
+
+        private void supprimerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmSupprimer FrmSupprimer = new FrmSupprimer();
+            FrmSupprimer.Show();
+
+        }
     }
 }

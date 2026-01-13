@@ -85,6 +85,12 @@
     <Compile Include="FrmMenu.Designer.cs">
       <DependentUpon>FrmMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSupprimer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSupprimer.Designer.cs">
+      <DependentUpon>FrmSupprimer.cs</DependentUpon>
+    </Compile>
     <Compile Include="gsbrapports2016DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -99,6 +105,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>gsbrapports2016DataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="gsbrapports2016DataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>gsbrapports2016DataSet3.xsd</DependentUpon>
     </Compile>
     <Compile Include="medecin.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -143,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMenu.resx">
       <DependentUpon>FrmMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSupprimer.resx">
+      <DependentUpon>FrmSupprimer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -189,6 +203,17 @@
     </None>
     <None Include="gsbrapports2016DataSet2.xss">
       <DependentUpon>gsbrapports2016DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="gsbrapports2016DataSet3.xsc">
+      <DependentUpon>gsbrapports2016DataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="gsbrapports2016DataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>gsbrapports2016DataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="gsbrapports2016DataSet3.xss">
+      <DependentUpon>gsbrapports2016DataSet3.xsd</DependentUpon>
     </None>
     <None Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
