@@ -45,8 +45,9 @@ namespace Medicament
 
         private void modifierToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmModifier frmModif = new FrmModifier(mesDonnees);
-            frmModif.Show();
+            FrmModifier FrmModifier = new FrmModifier(mesDonnees);
+            FrmModifier.Show();
+
         }
     }
 }

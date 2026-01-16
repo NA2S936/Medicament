@@ -85,11 +85,11 @@
     <Compile Include="FrmMenu.Designer.cs">
       <DependentUpon>FrmMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmModif.cs">
+    <Compile Include="FrmModifier.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmModif.Designer.cs">
-      <DependentUpon>FrmModif.cs</DependentUpon>
+    <Compile Include="FrmModifier.Designer.cs">
+      <DependentUpon>FrmModifier.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmSupprimer.cs">
       <SubType>Form</SubType>
@@ -116,6 +116,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>gsbrapports2016DataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="gsbrapports2016DataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>gsbrapports2016DataSet4.xsd</DependentUpon>
     </Compile>
     <Compile Include="medecin.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -161,8 +166,8 @@
     <EmbeddedResource Include="FrmMenu.resx">
       <DependentUpon>FrmMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmModif.resx">
-      <DependentUpon>FrmModif.cs</DependentUpon>
+    <EmbeddedResource Include="FrmModifier.resx">
+      <DependentUpon>FrmModifier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSupprimer.resx">
       <DependentUpon>FrmSupprimer.cs</DependentUpon>
@@ -224,6 +229,17 @@
     </None>
     <None Include="gsbrapports2016DataSet3.xss">
       <DependentUpon>gsbrapports2016DataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="gsbrapports2016DataSet4.xsc">
+      <DependentUpon>gsbrapports2016DataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="gsbrapports2016DataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>gsbrapports2016DataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="gsbrapports2016DataSet4.xss">
+      <DependentUpon>gsbrapports2016DataSet4.xsd</DependentUpon>
     </None>
     <None Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
