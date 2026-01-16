@@ -15,10 +15,12 @@ namespace Medicament
     
     public partial class FrmCreation : Form
     {
-        public FrmCreation()
+        private gsbrapports2016E mesDonneesEF;
+        public FrmCreation(gsbrapports2016E mesDonnees)
         {
           
             InitializeComponent();
+            this.mesDonneesEF = mesDonnees;
         }
 
         private void button1_Click(object sender, EventArgs e)

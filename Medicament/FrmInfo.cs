@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,36 +13,28 @@ namespace Medicament
 {
     public partial class FrmInfo : Form
     {
-        private gsbrapports2016E mesDonnees;
-        public FrmInfo()
+        private string idFamille;
+
+        // Nouveau constructeur qui reçoit l'ID
+        public FrmInfo(string idFamilleRecu)
         {
             InitializeComponent();
-            mesDonnees = new gsbrapports2016E();
-            this.medicamentBindingSource.DataSource = mesDonnees.medicaments.ToList();
-            this.dataGridView1.DataSource = medicamentBindingSource;
-            
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
+            this.idFamille = idFamilleRecu;
         }
 
         private void FrmInfo_Load(object sender, EventArgs e)
         {
-            // TODO: cette ligne de code charge les données dans la table 'gsbrapports2016DataSet2.medicament'. Vous pouvez la déplacer ou la supprimer selon les besoins.
-            this.medicamentTableAdapter.Fill(this.gsbrapports2016DataSet2.medicament);
+            using (var context = new gsbrapports2016E())
+            {
+                // C'est ici qu'on fait le filtrage (le lien/la "concaténation" logique)
+                // On ne prend que les médicaments dont l'idFamille correspond à celui reçu
+                var listeFiltree = context.medicaments
+                                          .Where(m => m.idFamille == this.idFamille)
+                                          .ToList();
 
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+                // On affiche le résultat dans ton DataGridView (ex: dataGridView1)
+                dataGridView1.DataSource = listeFiltree;
+            }
         }
     }
 }

@@ -53,7 +53,7 @@
             this.label1.Size = new System.Drawing.Size(327, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "informations sur les medicament ";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+        
             // 
             // dataGridView1
             // 
@@ -75,7 +75,7 @@
             this.dataGridView1.RowTemplate.Height = 33;
             this.dataGridView1.Size = new System.Drawing.Size(2104, 439);
             this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+          
             // 
             // gsbrapports2016DataSet2
             // 

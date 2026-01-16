@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.familleBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.gsbrapports2016DataSet1 = new Medicament.gsbrapports2016DataSet1();
             this.familleBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -37,22 +36,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.familleTableAdapter = new Medicament.gsbrapports2016DataSet1TableAdapters.familleTableAdapter();
             this.familleTableAdapter1 = new Medicament.gsbrapports2016DataSet1TableAdapters.familleTableAdapter();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.familleBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gsbrapports2016DataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.familleBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DataSource = this.familleBindingSource1;
-            this.comboBox1.DisplayMember = "libelle";
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(249, 232);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(733, 33);
-            this.comboBox1.TabIndex = 0;
-            this.comboBox1.ValueMember = "id";
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // familleBindingSource1
             // 
@@ -96,6 +84,15 @@
             // 
             this.familleTableAdapter1.ClearBeforeFill = true;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(249, 232);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(733, 33);
+            this.comboBox1.TabIndex = 0;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // FrmMedicaments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -116,8 +113,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.BindingSource familleBindingSource;
@@ -125,6 +120,7 @@
         private System.Windows.Forms.BindingSource familleBindingSource1;
         private gsbrapports2016DataSet1TableAdapters.familleTableAdapter familleTableAdapter;
         private gsbrapports2016DataSet1TableAdapters.familleTableAdapter familleTableAdapter1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 

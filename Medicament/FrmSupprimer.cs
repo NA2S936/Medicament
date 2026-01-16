@@ -7,19 +7,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Medicament
 {
     public partial class FrmSupprimer : Form
     {
-        public FrmSupprimer()
+        private gsbrapports2016E mesDonneesEF;
+        public FrmSupprimer(gsbrapports2016E mesDonneesEF)
         {
             InitializeComponent();
+            this.mesDonneesEF = mesDonneesEF;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-     
+            ActualiserListe();
+        }
+        private void ActualiserListe()
+        {
+            using (var context = new gsbrapports2016E()) // Ton contexte EF
+            {
+                var lesFamilles = context.familles.ToList();
+                Txtsupp.DataSource = lesFamilles;
+                Txtsupp.DisplayMember = "libelle"; // Affiche le nom
+                Txtsupp.ValueMember = "id";        // Garde l'ID en valeur
+            }
         }
 
         private void FrmSupprimer_Load(object sender, EventArgs e)
@@ -31,21 +44,40 @@ namespace Medicament
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (var context = new gsbrapports2016E())
+            if (Txtsupp.SelectedValue == null) return;
+
+            string idFamille = Txtsupp.SelectedValue.ToString();
+
+            // Demander confirmation (important pour le BTS SIO)
+            DialogResult reponse = MessageBox.Show("Voulez-vous supprimer cette famille ?", "Confirmation", MessageBoxButtons.YesNo);
+
+            if (reponse == DialogResult.Yes)
             {
-                var Suppfamille  = new famille
+                try
                 {
+                    using (var context = new gsbrapports2016E())
+                    {
+                        // On cherche la famille par son ID
+                        var laFamille = context.familles.Find(idFamille);
 
-                    libelle = Txtsupp.Text
-                };
+                        if (laFamille != null)
+                        {
+                            context.familles.Remove(laFamille);
+                            context.SaveChanges(); // Enregistre la suppression
 
-                context.familles.Add(Suppfamille);
-                context.SaveChanges();
-
-                MessageBox.Show("La famille a été supprimer avec succès dans la base de données !");
-
-
+                            MessageBox.Show("Famille supprimée !");
+                            ActualiserListe(); // Rafraîchit la liste après suppression
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Erreur si la famille est liée à des médicaments (contrainte SQL)
+                    MessageBox.Show("Impossible de supprimer : cette famille contient des médicaments.");
+                }
             }
+
         }
     }
 }
+
