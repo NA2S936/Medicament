@@ -1,83 +1,96 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Medicament
 {
     public partial class FrmSupprimer : Form
     {
+        // On utilise l'instance passée par le formulaire parent
         private gsbrapports2016E mesDonneesEF;
+
         public FrmSupprimer(gsbrapports2016E mesDonneesEF)
         {
             InitializeComponent();
             this.mesDonneesEF = mesDonneesEF;
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        // ÉVÉNEMENT LOAD : Se déclenche à l'ouverture de la fenêtre
+        private void FrmSupprimer_Load(object sender, EventArgs e)
         {
             ActualiserListe();
         }
+
+        // MÉTHODE POUR CHARGER/RAFRAICHIR LA COMBOBOX
         private void ActualiserListe()
         {
-            using (var context = new gsbrapports2016E()) // Ton contexte EF
-            {
-                var lesFamilles = context.familles.ToList();
-                Txtsupp.DataSource = lesFamilles;
-                Txtsupp.DisplayMember = "libelle"; // Affiche le nom
-                Txtsupp.ValueMember = "id";        // Garde l'ID en valeur
-            }
+            // On récupère les familles triées par libellé pour que ce soit plus propre
+            var lesFamilles = this.mesDonneesEF.familles.OrderBy(f => f.libelle).ToList();
+
+            // On lie les données à la ComboBox
+            Txtsupp.DataSource = lesFamilles;
+            Txtsupp.DisplayMember = "libelle"; // Ce que l'utilisateur voit
+            Txtsupp.ValueMember = "id";        // La valeur cachée (l'ID)
+
+            // On force la sélection sur "rien" au départ si tu veux
+            Txtsupp.SelectedIndex = -1;
         }
 
-        private void FrmSupprimer_Load(object sender, EventArgs e)
-        {
-            // TODO: cette ligne de code charge les données dans la table 'gsbrapports2016DataSet3.famille'. Vous pouvez la déplacer ou la supprimer selon les besoins.
-            this.familleTableAdapter.Fill(this.gsbrapports2016DataSet3.famille);
-
-        }
-
+        // BOUTON SUPPRIMER
         private void button1_Click(object sender, EventArgs e)
         {
-            if (Txtsupp.SelectedValue == null) return;
+            // Vérification : est-ce qu'un élément est sélectionné ?
+            if (Txtsupp.SelectedValue == null)
+            {
+                MessageBox.Show("Veuillez sélectionner une famille dans la liste.");
+                return;
+            }
 
+            // On récupère l'ID de la famille sélectionnée
             string idFamille = Txtsupp.SelectedValue.ToString();
 
-            // Demander confirmation (important pour le BTS SIO)
-            DialogResult reponse = MessageBox.Show("Voulez-vous supprimer cette famille ?", "Confirmation", MessageBoxButtons.YesNo);
+            // Confirmation (Standard BTS SIO)
+            DialogResult reponse = MessageBox.Show("Voulez-vous vraiment supprimer cette famille ?",
+                                                 "Confirmation",
+                                                 MessageBoxButtons.YesNo,
+                                                 MessageBoxIcon.Warning);
 
             if (reponse == DialogResult.Yes)
             {
                 try
                 {
-                    using (var context = new gsbrapports2016E())
+                    // On cherche l'objet dans le contexte
+                    var laFamille = this.mesDonneesEF.familles.Find(idFamille);
+
+                    if (laFamille != null)
                     {
-                        // On cherche la famille par son ID
-                        var laFamille = context.familles.Find(idFamille);
+                        this.mesDonneesEF.familles.Remove(laFamille);
+                        this.mesDonneesEF.SaveChanges(); // Enregistrement en base
 
-                        if (laFamille != null)
-                        {
-                            context.familles.Remove(laFamille);
-                            context.SaveChanges(); // Enregistre la suppression
+                        MessageBox.Show("Famille supprimée avec succès !");
 
-                            MessageBox.Show("Famille supprimée !");
-                            ActualiserListe(); // Rafraîchit la liste après suppression
-                        }
+                        // ON RAFRAICHIT ICI SEULEMENT
+                        ActualiserListe();
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    // Erreur si la famille est liée à des médicaments (contrainte SQL)
-                    MessageBox.Show("Impossible de supprimer : cette famille contient des médicaments.");
+                    // Erreur si violation de clé étrangère (si la famille est liée à un médicament)
+                    MessageBox.Show("Impossible de supprimer : cette famille est utilisée par des médicaments existants.",
+                                    "Erreur de contrainte",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
                 }
             }
+        }
 
+        // IMPORTANT : L'événement SelectedIndexChanged doit rester VIDE 
+        // ou être supprimé pour ne pas casser la sélection.
+        private void Txtsupp_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Ne rien mettre ici pour le chargement des données.
         }
     }
 }
-

@@ -37,16 +37,9 @@
             this.gsbrapports2016DataSet4 = new Medicament.gsbrapports2016DataSet4();
             this.button2 = new System.Windows.Forms.Button();
             this.familleTableAdapter = new Medicament.gsbrapports2016DataSet4TableAdapters.familleTableAdapter();
-            this.gsbrapports2016DataSet1 = new Medicament.gsbrapports2016DataSet();
-            this.gsbrapports2016DataSet5 = new Medicament.gsbrapports2016DataSet5();
-            this.familleBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.familleTableAdapter1 = new Medicament.gsbrapports2016DataSet5TableAdapters.familleTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.familleBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gsbrapports2016DataSet4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gsbrapports2016DataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gsbrapports2016DataSet5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.familleBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -65,8 +58,8 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
             this.libelleDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.familleBindingSource1;
-            this.dataGridView1.Location = new System.Drawing.Point(127, 123);
+            this.dataGridView1.DataSource = this.familleBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(68, 143);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 82;
             this.dataGridView1.RowTemplate.Height = 33;
@@ -107,29 +100,11 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "Enregistrer";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // familleTableAdapter
             // 
             this.familleTableAdapter.ClearBeforeFill = true;
-            // 
-            // gsbrapports2016DataSet1
-            // 
-            this.gsbrapports2016DataSet1.DataSetName = "gsbrapports2016DataSet";
-            this.gsbrapports2016DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // gsbrapports2016DataSet5
-            // 
-            this.gsbrapports2016DataSet5.DataSetName = "gsbrapports2016DataSet5";
-            this.gsbrapports2016DataSet5.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // familleBindingSource1
-            // 
-            this.familleBindingSource1.DataMember = "famille";
-            this.familleBindingSource1.DataSource = this.gsbrapports2016DataSet5;
-            // 
-            // familleTableAdapter1
-            // 
-            this.familleTableAdapter1.ClearBeforeFill = true;
             // 
             // FrmModifier
             // 
@@ -141,13 +116,9 @@
             this.Controls.Add(this.label1);
             this.Name = "FrmModifier";
             this.Text = "FrmModifier";
-            this.Load += new System.EventHandler(this.FrmModifier_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.familleBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gsbrapports2016DataSet4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gsbrapports2016DataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gsbrapports2016DataSet5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.familleBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,9 +134,5 @@
         private gsbrapports2016DataSet4TableAdapters.familleTableAdapter familleTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn libelleDataGridViewTextBoxColumn;
-        private gsbrapports2016DataSet gsbrapports2016DataSet1;
-        private gsbrapports2016DataSet5 gsbrapports2016DataSet5;
-        private System.Windows.Forms.BindingSource familleBindingSource1;
-        private gsbrapports2016DataSet5TableAdapters.familleTableAdapter familleTableAdapter1;
     }
 }

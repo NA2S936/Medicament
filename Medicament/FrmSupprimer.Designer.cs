@@ -58,7 +58,7 @@
             this.Txtsupp.Size = new System.Drawing.Size(555, 33);
             this.Txtsupp.TabIndex = 1;
             this.Txtsupp.ValueMember = "libelle";
-            this.Txtsupp.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+          
             // 
             // familleBindingSource
             // 
